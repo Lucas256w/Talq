@@ -2,7 +2,10 @@
   background-color: var(--dark-grey);
   color: white;
   padding: 2rem 1rem;
-  width: 300px;
+  min-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid var(--border-color);
 }
 
 .profileIcon {
@@ -74,4 +77,8 @@
 .input:focus {
   border: none;
   outline: none;
+}
+
+.tabsContainer {
+  overflow: auto;
 }

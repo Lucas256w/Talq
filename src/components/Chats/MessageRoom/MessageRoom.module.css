@@ -1,0 +1,67 @@
+.messageRoom {
+  display: flex;
+  flex-direction: column;
+}
+
+.roomHeader {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--dark-grey);
+  color: white;
+  gap: 1rem;
+}
+
+.profileIcon {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+}
+
+.room {
+  background-color: #0a0f0f;
+  flex: 1;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  overflow: auto;
+}
+
+.receiver {
+  width: fit-content;
+  max-width: 50%;
+}
+
+.receiverBox {
+  background-color: #252b2e;
+  padding: 1rem;
+  border-radius: 0 15px 15px 15px;
+  width: fit-content;
+  color: #9b9e9f;
+}
+
+.receiverTime {
+  text-align: end;
+}
+
+.sender {
+  width: fit-content;
+  max-width: 50%;
+  margin-left: auto;
+}
+
+.senderBox {
+  background-color: var(--blue);
+  padding: 1rem;
+  border-radius: 15px 0 15px 15px;
+  color: #13242a;
+}
+
+.senderTime,
+.receiverTime {
+  font-size: 0.7rem;
+  font-weight: 200;
+  color: #7c7f80;
+  margin: 0.5rem 0;
+}

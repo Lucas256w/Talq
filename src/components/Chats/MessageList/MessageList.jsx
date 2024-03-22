@@ -7,6 +7,16 @@ const testData = [
   { name: "mike", lastText: "something wrong?", date: "13.10 PM" },
   { name: "mike", lastText: "something wrong?", date: "13.10 PM" },
   { name: "mike", lastText: "something wrong?", date: "13.10 PM" },
+  { name: "mike", lastText: "something wrong?", date: "13.10 PM" },
+  { name: "mike", lastText: "something wrong?", date: "13.10 PM" },
+  { name: "mike", lastText: "something wrong?", date: "13.10 PM" },
+  { name: "mike", lastText: "something wrong?", date: "13.10 PM" },
+  { name: "mike", lastText: "something wrong?", date: "13.10 PM" },
+  { name: "mike", lastText: "something wrong?", date: "13.10 PM" },
+  { name: "mike", lastText: "something wrong?", date: "13.10 PM" },
+  { name: "mike", lastText: "something wrong?", date: "13.10 PM" },
+  { name: "mike", lastText: "something wrong?", date: "13.10 PM" },
+  { name: "mike", lastText: "something wrong?", date: "13.10 PM" },
 ];
 
 const MessageList = () => {
@@ -19,8 +29,8 @@ const MessageList = () => {
           placeholder="Search Message"
         />
       </div>
-      <div>
-        <div className={styles.tabTitle}>Messages</div>
+      <div className={styles.tabTitle}>Messages</div>
+      <div className={styles.tabsContainer}>
         {testData.map((t) => (
           <div className={styles.messageTab} key={testData.indexOf(t)}>
             <img className={styles.profileIcon} src={placeholder} />
