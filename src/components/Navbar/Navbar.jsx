@@ -1,4 +1,3 @@
-import React from "react";
 import chats from "/chats.svg";
 import chatsSelected from "/chats-selected.svg";
 import friends from "/friends.svg";
@@ -7,11 +6,16 @@ import settings from "/settings.svg";
 import settingsSelected from "/settings-selected.svg";
 import styles from "./Navbar.module.css";
 
+import { useNavigate } from "react-router-dom";
+
 const Navbar = ({ page, setPage }) => {
+  const navigate = useNavigate();
+
   // Function to handle tab change and potentially other logic
   const changeTab = (newPage) => {
     if (newPage !== page) {
       setPage(newPage);
+      navigate(`/${newPage}`);
     }
   };
 

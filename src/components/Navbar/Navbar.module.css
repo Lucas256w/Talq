@@ -31,7 +31,7 @@
   transform: translate(-50%, -50%);
   background-color: var(--blue);
   border-radius: 50%;
-  animation: expandAndBounce 0.2s ease-in forwards;
+  animation: expandAndBounce 0.1s linear forwards;
 }
 
 /* Define the keyframes for the animation */
