@@ -1,0 +1,58 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: var(--dark-grey);
+  border-right: 2px solid var(--border-color);
+}
+
+/* Define the initial state of the icon container */
+.iconContainer {
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.iconContainer.selected::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 3rem;
+  width: 3rem;
+  transform: translate(-50%, -50%);
+  background-color: var(--blue);
+  border-radius: 50%;
+  animation: expandAndBounce 0.2s ease-in forwards;
+}
+
+/* Define the keyframes for the animation */
+@keyframes expandAndBounce {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    width: 3rem;
+    height: 3rem;
+    opacity: 1;
+  }
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  z-index: 2;
+}
+
+.iconContainer:hover {
+  cursor: pointer;
+}

@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Chats from "./pages/Chats";
 import App from "./App";
 
 const Router = () => {
@@ -6,6 +7,7 @@ const Router = () => {
     {
       path: "/",
       element: <App />,
+      children: [{ index: true, element: <Chats /> }],
     },
   ]);
 
