@@ -29,4 +29,5 @@ time, mark, audio, video {
 body,
 #root {
   height: 100vh;
+  font-family: "Noto Sans Syriac", sans-serif;
 }

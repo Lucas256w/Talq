@@ -1,5 +1,11 @@
+import MessageList from "../components/Chats/MessageList.jsx/MessageList";
+
 const Chats = () => {
-  return <div>chats</div>;
+  return (
+    <>
+      <MessageList />
+    </>
+  );
 };
 
 export default Chats;
