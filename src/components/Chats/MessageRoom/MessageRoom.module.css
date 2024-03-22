@@ -10,6 +10,7 @@
   background-color: var(--dark-grey);
   color: white;
   gap: 1rem;
+  border-bottom: 2px solid var(--border-color);
 }
 
 .profileIcon {
@@ -21,11 +22,11 @@
 .room {
   background-color: #0a0f0f;
   flex: 1;
-  color: white;
   display: flex;
   flex-direction: column;
   padding: 2rem;
   overflow: auto;
+  font-size: 0.9rem;
 }
 
 .receiver {
@@ -64,4 +65,36 @@
   font-weight: 200;
   color: #7c7f80;
   margin: 0.5rem 0;
+}
+
+.inputContainer {
+  display: flex;
+  padding: 1rem 0;
+  background-color: #202426;
+  border-radius: 15px;
+  border: 2px solid var(--border-color);
+  flex: 1;
+}
+
+.input {
+  background-color: #202426;
+  border: none;
+  color: var(--blue);
+  flex: 1;
+  padding: 0 1rem;
+  font-size: 1rem;
+}
+
+.input:focus {
+  border: none;
+  outline: none;
+}
+
+.bottom {
+  background-color: var(--dark-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 2rem;
+  border-top: 2px solid var(--border-color);
 }
