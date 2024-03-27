@@ -1,0 +1,23 @@
+.navContainer {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.tab {
+  flex: 1;
+  padding: 1rem;
+  color: white;
+  background-color: var(--dark-grey);
+  border: 2px solid var(--border-color);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.tab.selected {
+  background-color: var(--blue);
+}
+
+.tab:hover {
+  cursor: pointer;
+}
