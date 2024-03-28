@@ -1,4 +1,8 @@
 import profileIcon from "/placeholder.webp";
+import EmailEdit from "../EditInfos/EmailEdit";
+import PasswordEdit from "../EditInfos/PasswordEdit";
+import UsernameEdit from "../EditInfos/UsernameEdit";
+import { useNavigate } from "react-router-dom";
 import styles from "./AccountInfo.module.css";
 import { useState } from "react";
 
@@ -7,118 +11,13 @@ const testUser = {
   email: "Test@gmail.com",
 };
 
-const UsernameEdit = ({ setEditScreen }) => {
-  return (
-    <>
-      <div className={styles.overlay}></div>
-      <div className={styles.editCard}>
-        <div className={styles.editTitle}>Change your username</div>
-        <div className={styles.editSubTitle}>
-          Enter a new username and your existing password
-        </div>
-        <div className={styles.inputGroup}>
-          <label className={styles.label} htmlFor="username">
-            USERNAME
-          </label>
-          <input className={styles.input} name="username" type="text" />
-        </div>
-        <div className={styles.inputGroup}>
-          <label className={styles.label} htmlFor="password">
-            PASSWORD
-          </label>
-          <input className={styles.input} name="password" type="password" />
-        </div>
-        <div className={styles.actionButtonContainer}>
-          <button className={styles.cancel} onClick={() => setEditScreen(null)}>
-            Cancel
-          </button>
-          <button className={styles.done}>Done</button>
-        </div>
-      </div>
-    </>
-  );
-};
-
-const EmailEdit = ({ setEditScreen }) => {
-  return (
-    <>
-      <div className={styles.overlay}></div>
-      <div className={styles.editCard}>
-        <div className={styles.editTitle}>Change your Email</div>
-        <div className={styles.editSubTitle}>
-          Enter a new email and your existing password
-        </div>
-        <div className={styles.inputGroup}>
-          <label className={styles.label} htmlFor="email">
-            EMAIL
-          </label>
-          <input className={styles.input} name="email" type="email" />
-        </div>
-        <div className={styles.inputGroup}>
-          <label className={styles.label} htmlFor="password">
-            PASSWORD
-          </label>
-          <input className={styles.input} name="password" type="password" />
-        </div>
-        <div className={styles.actionButtonContainer}>
-          <button className={styles.cancel} onClick={() => setEditScreen(null)}>
-            Cancel
-          </button>
-          <button className={styles.done}>Done</button>
-        </div>
-      </div>
-    </>
-  );
-};
-
-const PasswordEdit = ({ setEditScreen }) => {
-  return (
-    <>
-      <div className={styles.overlay}></div>
-      <div className={styles.editCard}>
-        <div className={styles.editTitle}>Change your password</div>
-        <div className={styles.editSubTitle}>
-          Enter a new password and your existing password
-        </div>
-        <div className={styles.inputGroup}>
-          <label className={styles.label} htmlFor="currentPassword">
-            CURRENT PASSWORD
-          </label>
-          <input
-            className={styles.input}
-            name="currentPassword"
-            type="password"
-          />
-        </div>
-        <div className={styles.inputGroup}>
-          <label className={styles.label} htmlFor="newPassword">
-            NEW PASSWORD
-          </label>
-          <input className={styles.input} name="newPassword" type="password" />
-        </div>
-        <div className={styles.inputGroup}>
-          <label className={styles.label} htmlFor="confirmPassword">
-            CONFIRM NEW PASSWORD
-          </label>
-          <input
-            className={styles.input}
-            name="confirmPassword"
-            type="password"
-          />
-        </div>
-        <div className={styles.actionButtonContainer}>
-          <button className={styles.cancel} onClick={() => setEditScreen(null)}>
-            Cancel
-          </button>
-          <button className={styles.done}>Done</button>
-        </div>
-      </div>
-    </>
-  );
-};
-
 const AccountInfo = () => {
   const [editScreen, setEditScreen] = useState(null);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.clear("token");
+    navigate("/login");
+  };
 
   return (
     <div className={styles.accountInfoPage}>
@@ -172,6 +71,11 @@ const AccountInfo = () => {
               Edit
             </button>
           </div>
+        </div>
+        <div>
+          <button className={styles.logout} onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       </div>
     </div>

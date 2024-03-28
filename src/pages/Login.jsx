@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setUser }) => {
+const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    setUser({ name: "test" });
+    localStorage.setItem("token", { name: "hello" });
     navigate("/chats");
   };
+
   return <button onClick={handleLogin}>Login</button>;
 };
 

@@ -1,0 +1,118 @@
+.overlay {
+  position: fixed;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  animation: opacity-appear 0.5s forwards;
+}
+
+@keyframes opacity-appear {
+  from {
+    opacity: 25%;
+  }
+
+  to {
+    opacity: 50%;
+  }
+}
+
+.editCard {
+  z-index: 1;
+  position: absolute;
+  background-color: #303338;
+  padding: 2rem;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  animation: bounceIn 0.2s ease-out both;
+  transform-origin: center;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.editTitle {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 600;
+}
+
+.editSubTitle {
+  color: white;
+  font-size: 0.9rem;
+  color: gray;
+}
+
+.label {
+  color: gray;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.input {
+  border: none;
+  background-color: var(--dark-grey);
+  padding: 0.5rem;
+  font-family: inherit;
+  color: white;
+}
+
+.input:focus {
+  border: none;
+  outline: none;
+}
+
+.actionButtonContainer {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.cancel {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-family: inherit;
+  padding: 0.5rem 2rem;
+}
+
+.done {
+  border: none;
+  background-color: var(--blue);
+  color: white;
+  font-family: inherit;
+  border-radius: 5px;
+  padding: 0.5rem 2rem;
+}
+
+.cancel:hover,
+.done:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
