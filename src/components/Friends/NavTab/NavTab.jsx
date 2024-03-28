@@ -19,6 +19,14 @@ const NavTab = ({ page, setPage }) => {
       >
         Pending
       </button>
+      <button
+        className={`${styles.tab} ${
+          page === "Add Friend" ? styles.selected : null
+        }`}
+        onClick={() => setPage("Add Friend")}
+      >
+        Add Friend
+      </button>
     </div>
   );
 };

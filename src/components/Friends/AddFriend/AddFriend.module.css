@@ -1,0 +1,72 @@
+.addFriendPage {
+  background-color: var(--dark-grey);
+  color: white;
+  padding: 1rem;
+  flex: 1;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.input {
+  border: none;
+  width: 100%;
+  background-color: #202426;
+  padding: 0.5rem;
+  color: white;
+  font-size: 1rem;
+}
+
+.input:focus {
+  border: none;
+  outline: none;
+}
+
+.usersContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.userTab {
+  border-top: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.profileIcon {
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+}
+
+.userName {
+  font-size: 0.9rem;
+  margin-left: 1rem;
+}
+
+.accept,
+.decline {
+  border: none;
+  color: white;
+  font-family: inherit;
+  border-radius: 5px;
+}
+
+.accept:hover,
+.decline:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+
+.accept {
+  margin: 0 1rem 0 auto;
+  background-color: green;
+}
+
+.decline {
+  background-color: rgb(182, 0, 0);
+}
