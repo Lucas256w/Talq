@@ -1,5 +1,7 @@
+import AccountInfo from "../components/Settings/AccountInfo/AccountInfo";
+
 const Settings = () => {
-  return <div>settings</div>;
+  return <AccountInfo />;
 };
 
 export default Settings;
