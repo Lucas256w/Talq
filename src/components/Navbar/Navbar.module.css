@@ -57,11 +57,11 @@
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .navbar {
     flex-direction: row;
     border-top: 2px solid var(--border-color);
-    height: 80px;
+    min-height: 80px;
     padding: 0;
   }
 }

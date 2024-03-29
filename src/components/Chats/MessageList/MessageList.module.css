@@ -25,6 +25,16 @@
 .messageTab {
   gap: 1rem;
   padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid var(--dark-grey);
+}
+
+.messageTab:hover {
+  cursor: pointer;
+}
+
+.selected {
+  border: 1px solid var(--blue);
 }
 
 .nameAndDateContainer {
@@ -85,7 +95,7 @@
   overflow-y: scroll;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .messageList {
     width: auto;
     max-width: none;

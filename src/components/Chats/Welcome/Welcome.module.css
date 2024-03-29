@@ -1,0 +1,17 @@
+.welcomePage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #0a0f0f;
+  color: white;
+  font-size: 2rem;
+  gap: 2rem;
+  text-align: center;
+}
+
+.icon {
+  height: 10rem;
+}

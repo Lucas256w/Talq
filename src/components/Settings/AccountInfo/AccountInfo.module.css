@@ -51,9 +51,10 @@
   background-color: var(--blue);
   color: white;
   font-family: inherit;
-  font-size: 0.9rem;
   border-radius: 5px;
   padding: 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .edit:hover,
@@ -71,4 +72,6 @@
   font-weight: 600;
   border-radius: 5px;
   padding: 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
 }

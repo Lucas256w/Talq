@@ -55,6 +55,8 @@
   color: white;
   font-family: inherit;
   border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .accept:hover,

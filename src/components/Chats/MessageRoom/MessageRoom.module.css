@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   overflow: scroll;
+  width: 100%;
 }
 
 .roomHeader {
@@ -18,6 +19,12 @@
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
+}
+
+.backIcon {
+  height: 0;
+  width: 0;
+  visibility: hidden;
 }
 
 .room {
@@ -100,10 +107,14 @@
   border-top: 2px solid var(--border-color);
 }
 
-@media (max-width: 600px) {
-  .messageRoom {
-    visibility: hidden;
-    height: 0;
-    width: 0;
+@media (max-width: 900px) {
+  .backIcon {
+    height: 2rem;
+    width: 2rem;
+    visibility: visible;
+  }
+
+  .backIcon:hover {
+    cursor: pointer;
   }
 }

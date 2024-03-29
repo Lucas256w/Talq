@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 
 import placeholder from "/placeholder.webp";
+import back from "/back.svg";
 import styles from "./MessageRoom.module.css";
 
 const testData = [
@@ -22,7 +23,7 @@ const testData = [
   { id: 2, content: "Hello, Mike", time: "12.00 PM", uid: 4 },
 ];
 
-const MessageRoom = () => {
+const MessageRoom = ({ setSelected }) => {
   const bottomRef = useRef(null);
 
   useEffect(() => {
@@ -34,6 +35,12 @@ const MessageRoom = () => {
   return (
     <div className={styles.messageRoom}>
       <div className={styles.roomHeader}>
+        <img
+          className={styles.backIcon}
+          src={back}
+          alt="back button"
+          onClick={() => setSelected(null)}
+        />
         <img className={styles.profileIcon} src={placeholder} alt="Profile" />
         <div>Mike</div>
       </div>

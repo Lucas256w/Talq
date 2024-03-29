@@ -56,6 +56,8 @@
   font-family: inherit;
   border-radius: 5px;
   margin-left: auto;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .removeFriend:hover {

@@ -100,6 +100,8 @@
   color: white;
   font-family: inherit;
   padding: 0.5rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .done {
@@ -109,6 +111,8 @@
   font-family: inherit;
   border-radius: 5px;
   padding: 0.5rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .cancel:hover,
