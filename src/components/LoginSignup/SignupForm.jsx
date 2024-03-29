@@ -57,7 +57,7 @@ const LoginForm = ({ handleSignup }) => {
             />
           </div>
           <button className={styles.btn} type="submit">
-            Log In
+            Sign Up
           </button>
         </form>
         <div className={styles.signupDirect}>

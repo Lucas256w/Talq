@@ -99,3 +99,11 @@
   padding: 1.5rem 2rem;
   border-top: 2px solid var(--border-color);
 }
+
+@media (max-width: 600px) {
+  .messageRoom {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+  }
+}

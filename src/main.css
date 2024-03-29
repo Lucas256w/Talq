@@ -29,8 +29,7 @@ time, mark, audio, video {
 html,
 body,
 #root {
-  /* height: 100vh; */
   height: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
   font-family: "Noto Sans Syriac", sans-serif;
 }

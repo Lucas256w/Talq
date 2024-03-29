@@ -2,7 +2,9 @@
   background-color: var(--dark-grey);
   color: white;
   padding: 2rem 1rem;
-  min-width: 20rem;
+  min-width: 15rem;
+  width: 100%;
+  max-width: 20rem;
   display: flex;
   flex-direction: column;
   border-right: 2px solid var(--border-color);
@@ -80,5 +82,23 @@
 }
 
 .tabsContainer {
-  overflow: auto;
+  overflow-y: scroll;
+}
+
+@media (max-width: 600px) {
+  .messageList {
+    width: auto;
+    max-width: none;
+    min-width: none;
+
+    height: calc(100% - 80px);
+    padding: 0 1rem;
+    border: none;
+  }
+  .inputContainer {
+    margin-top: 1rem;
+  }
+  .tabsContainer {
+    flex-grow: 1;
+  }
 }

@@ -21,16 +21,6 @@
   position: relative;
 }
 
-.appIconContainer {
-  position: absolute;
-  top: 2rem;
-}
-
-.appIcon {
-  width: 3rem;
-  height: 3rem;
-}
-
 .iconContainer.selected::before {
   content: "";
   position: absolute;
@@ -65,4 +55,13 @@
 
 .iconContainer:hover {
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: row;
+    border-top: 2px solid var(--border-color);
+    height: 80px;
+    padding: 0;
+  }
 }
