@@ -7,6 +7,7 @@ import Chats from "./pages/Chats";
 import Friends from "./pages/Friends";
 import Settings from "./pages/Settings";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import App from "./App";
 
 const Router = () => {
@@ -24,6 +25,10 @@ const Router = () => {
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/signup",
+      element: <Signup />,
     },
   ]);
 

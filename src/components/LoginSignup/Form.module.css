@@ -1,6 +1,7 @@
 .formPage {
   display: flex;
-  height: 100vh;
+  height: 100%;
+  overflow: scroll;
   justify-content: center;
   align-items: center;
   background-color: var(--blue);

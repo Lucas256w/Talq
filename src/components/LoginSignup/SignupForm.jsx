@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import TalqIcon from "/Talq-icon.png";
 import styles from "./Form.module.css";
 
-const LoginForm = ({ handleLogin }) => {
+const LoginForm = ({ handleSignup }) => {
   return (
     <div className={styles.formPage}>
       <div className={styles.formContainer}>
@@ -10,9 +10,8 @@ const LoginForm = ({ handleLogin }) => {
           <img className={styles.icon} src={TalqIcon} alt="Talq Icon" />
           <div className={styles.appName}>Talq</div>
         </div>
-        <div className={styles.formTitle}>Welcome back!</div>
-        <div className={styles.formSubtitle}>So excited to see you again</div>
-        <form className={styles.form} onSubmit={handleLogin}>
+        <div className={styles.formTitle}>Create an account</div>
+        <form className={styles.form} onSubmit={handleSignup}>
           <div className={styles.inputGroup}>
             <label className={styles.label} htmlFor="username">
               USERNAME
@@ -22,6 +21,17 @@ const LoginForm = ({ handleLogin }) => {
               type="text"
               name="username"
               id="username"
+            />
+          </div>
+          <div className={styles.inputGroup}>
+            <label className={styles.label} htmlFor="email">
+              EMAIL
+            </label>
+            <input
+              className={styles.input}
+              type="email"
+              name="email"
+              id="email"
             />
           </div>
           <div className={styles.inputGroup}>
@@ -35,14 +45,25 @@ const LoginForm = ({ handleLogin }) => {
               id="password"
             />
           </div>
+          <div className={styles.inputGroup}>
+            <label className={styles.label} htmlFor="confirmPassword">
+              CONFIRM PASSWORD
+            </label>
+            <input
+              className={styles.input}
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+            />
+          </div>
           <button className={styles.btn} type="submit">
             Log In
           </button>
         </form>
         <div className={styles.signupDirect}>
-          Need an account?{" "}
-          <Link className={styles.signupLink} to={"/signup"}>
-            Sign Up
+          Already have an account?{" "}
+          <Link className={styles.signupLink} to={"/Login"}>
+            Login
           </Link>
         </div>
       </div>

@@ -26,8 +26,11 @@ time, mark, audio, video {
   --border-color: #282b2d;
 }
 
+html,
 body,
 #root {
-  height: 100vh;
+  /* height: 100vh; */
+  height: 100%;
+  overflow: scroll;
   font-family: "Noto Sans Syriac", sans-serif;
 }
