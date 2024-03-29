@@ -21,6 +21,16 @@
   position: relative;
 }
 
+.appIconContainer {
+  position: absolute;
+  top: 2rem;
+}
+
+.appIcon {
+  width: 3rem;
+  height: 3rem;
+}
+
 .iconContainer.selected::before {
   content: "";
   position: absolute;

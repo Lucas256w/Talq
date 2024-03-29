@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import LoginForm from "../components/LoginSignup/LoginForm";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -8,7 +9,7 @@ const Login = () => {
     navigate("/chats");
   };
 
-  return <button onClick={handleLogin}>Login</button>;
+  return <LoginForm handleLogin={handleLogin} />;
 };
 
 export default Login;

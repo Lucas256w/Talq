@@ -13,13 +13,23 @@ const EmailEdit = ({ setEditScreen }) => {
           <label className={styles.label} htmlFor="email">
             EMAIL
           </label>
-          <input className={styles.input} name="email" type="email" />
+          <input
+            className={styles.input}
+            name="email"
+            type="email"
+            id="email"
+          />
         </div>
         <div className={styles.inputGroup}>
           <label className={styles.label} htmlFor="password">
             PASSWORD
           </label>
-          <input className={styles.input} name="password" type="password" />
+          <input
+            className={styles.input}
+            name="password"
+            type="password"
+            id="password"
+          />
         </div>
         <div className={styles.actionButtonContainer}>
           <button className={styles.cancel} onClick={() => setEditScreen(null)}>

@@ -16,6 +16,7 @@ const PasswordEdit = ({ setEditScreen }) => {
           <input
             className={styles.input}
             name="currentPassword"
+            id="currentPassword"
             type="password"
           />
         </div>
@@ -23,7 +24,12 @@ const PasswordEdit = ({ setEditScreen }) => {
           <label className={styles.label} htmlFor="newPassword">
             NEW PASSWORD
           </label>
-          <input className={styles.input} name="newPassword" type="password" />
+          <input
+            className={styles.input}
+            name="newPassword"
+            type="password"
+            id="newPassword"
+          />
         </div>
         <div className={styles.inputGroup}>
           <label className={styles.label} htmlFor="confirmPassword">
@@ -33,6 +39,7 @@ const PasswordEdit = ({ setEditScreen }) => {
             className={styles.input}
             name="confirmPassword"
             type="password"
+            id="confirmPassword"
           />
         </div>
         <div className={styles.actionButtonContainer}>

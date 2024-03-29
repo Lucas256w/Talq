@@ -4,6 +4,7 @@ import friends from "/friends.svg";
 import friendsSelected from "/friends-selected.svg";
 import settings from "/settings.svg";
 import settingsSelected from "/settings-selected.svg";
+import TalqIcon from "/Talq-icon.png";
 import styles from "./Navbar.module.css";
 
 import { useNavigate } from "react-router-dom";
@@ -28,6 +29,9 @@ const Navbar = ({ page, setPage }) => {
 
   return (
     <div className={styles.navbar}>
+      <div className={styles.appIconContainer}>
+        <img className={styles.appIcon} src={TalqIcon} alt="App Icon" />
+      </div>
       <div className={getClassName("chats")} onClick={() => changeTab("chats")}>
         <img
           className={styles.icon}
