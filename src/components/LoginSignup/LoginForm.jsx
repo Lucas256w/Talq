@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import TalqIcon from "/Talq-icon.png";
 import styles from "./Form.module.css";
+import PropTypes from "prop-types";
 
-const LoginForm = ({ handleLogin }) => {
+const LoginForm = ({ handleLogin, setLoginInfo, loginInfo }) => {
   return (
     <div className={styles.formPage}>
       <div className={styles.formContainer}>
@@ -22,6 +23,10 @@ const LoginForm = ({ handleLogin }) => {
               type="text"
               name="username"
               id="username"
+              value={loginInfo.username}
+              onChange={(e) =>
+                setLoginInfo({ ...loginInfo, username: e.target.value })
+              }
             />
           </div>
           <div className={styles.inputGroup}>
@@ -30,9 +35,13 @@ const LoginForm = ({ handleLogin }) => {
             </label>
             <input
               className={styles.input}
-              type="text"
+              type="password"
               name="password"
               id="password"
+              value={loginInfo.password}
+              onChange={(e) =>
+                setLoginInfo({ ...loginInfo, password: e.target.value })
+              }
             />
           </div>
           <button className={styles.btn} type="submit">
@@ -48,6 +57,12 @@ const LoginForm = ({ handleLogin }) => {
       </div>
     </div>
   );
+};
+
+LoginForm.propTypes = {
+  handleLogin: PropTypes.func.isRequired,
+  setLoginInfo: PropTypes.func.isRequired,
+  loginInfo: PropTypes.object.isRequired,
 };
 
 export default LoginForm;

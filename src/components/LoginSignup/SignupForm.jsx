@@ -1,30 +1,25 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import TalqIcon from "/Talq-icon.png";
-import placeholder from "/placeholder.webp";
 import styles from "./Form.module.css";
+import { useRef } from "react";
 
-const LoginForm = ({ info, setInfo, handleSignup }) => {
+const SignupForm = ({ info, setInfo, handleSignup }) => {
+  const hiddenFileInput = useRef(null);
+
+  const handleClick = () => {
+    hiddenFileInput.current.click();
+  };
   return (
     <div className={styles.formPage}>
       <div className={styles.formContainer}>
-        <div className={styles.iconContainer}>
-          <img className={styles.icon} src={TalqIcon} alt="Talq Icon" />
-          <div className={styles.appName}>Talq</div>
-        </div>
         <div className={styles.formTitle}>Create an account</div>
-        <img className={styles.icon} src={info.profile_img} />
         <form
           className={styles.form}
           onSubmit={handleSignup}
           encType="multipart/form-data"
         >
-          <div className={styles.inputGroup}>
-            <label className={styles.label} htmlFor="profile_img">
-              Profile Picture (Optional)
-            </label>
+          <div className={styles.profilePicGroup}>
             <input
-              className={styles.input}
               type="file"
               accept="image/*"
               name="profile_img"
@@ -34,7 +29,13 @@ const LoginForm = ({ info, setInfo, handleSignup }) => {
                 setInfo({ ...info, profile_img: imageURL });
               }}
               id="profile_img"
+              ref={hiddenFileInput}
+              style={{ display: "none" }}
             />
+            <img className={styles.icon} src={info.profile_img} />
+            <div className={styles.imageUpload} onClick={handleClick}>
+              Change Profile Photo (Optional)
+            </div>
           </div>
           <div className={styles.inputGroup}>
             <label className={styles.label} htmlFor="username">
@@ -105,10 +106,10 @@ const LoginForm = ({ info, setInfo, handleSignup }) => {
   );
 };
 
-LoginForm.propTypes = {
+SignupForm.propTypes = {
   info: PropTypes.object.isRequired,
   setInfo: PropTypes.func.isRequired,
   handleSignup: PropTypes.func.isRequired,
 };
 
-export default LoginForm;
+export default SignupForm;

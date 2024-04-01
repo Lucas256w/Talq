@@ -1,9 +1,13 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import styles from "./App.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { reloginAPI } from "./api/userAPI";
+
+const UserContext = createContext({
+  user: {},
+});
 
 function App() {
   const [page, setPage] = useState("chats");
@@ -23,6 +27,8 @@ function App() {
           localStorage.removeItem("token");
           navigate("/login");
         }
+      } else {
+        navigate("/login");
       }
     };
 
@@ -31,8 +37,10 @@ function App() {
 
   return (
     <div className={styles.page}>
-      <Navbar page={page} setPage={setPage} />
-      <Outlet />
+      <UserContext.Provider value={{ user }}>
+        <Navbar page={page} setPage={setPage} />
+        <Outlet />
+      </UserContext.Provider>
     </div>
   );
 }

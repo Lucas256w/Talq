@@ -7,6 +7,13 @@
   background-color: var(--blue);
 }
 
+.icon {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .iconContainer {
   display: flex;
   align-items: center;
@@ -15,11 +22,6 @@
   font-size: 3rem;
   font-weight: 700;
   text-decoration: underline;
-}
-
-.icon {
-  height: 5rem;
-  width: 5rem;
 }
 
 .formContainer {
@@ -101,6 +103,23 @@
 .signupLink {
   color: var(--blue);
   text-decoration: none;
+}
+
+.profilePicGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.imageUpload {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.imageUpload:hover {
+  cursor: pointer;
+  filter: brightness(90%);
 }
 
 @media (max-width: 600px) {
