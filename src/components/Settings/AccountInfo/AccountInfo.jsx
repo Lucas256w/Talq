@@ -4,7 +4,8 @@ import PasswordEdit from "../EditInfos/PasswordEdit";
 import UsernameEdit from "../EditInfos/UsernameEdit";
 import { useNavigate } from "react-router-dom";
 import styles from "./AccountInfo.module.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../../../App";
 
 const testUser = {
   username: "User Here",
@@ -13,6 +14,7 @@ const testUser = {
 
 const AccountInfo = () => {
   const [editScreen, setEditScreen] = useState(null);
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.clear("token");
@@ -31,14 +33,14 @@ const AccountInfo = () => {
       <div className={styles.accountInfoCard}>
         <img
           className={styles.profileIcon}
-          src={profileIcon}
+          src={user.profile_img ? user.profile_img : profileIcon}
           alt="Profile Icon"
         />
         <div className={styles.accountInfos}>
           <div className={styles.infoSection}>
             <div>
               <div>Username </div>
-              <div className={styles.accountInfo}>{testUser.username}</div>
+              <div className={styles.accountInfo}>{user.username}</div>
             </div>
             <button
               className={styles.edit}
@@ -50,7 +52,7 @@ const AccountInfo = () => {
           <div className={styles.infoSection}>
             <div>
               <div>Email </div>
-              <div className={styles.accountInfo}>{testUser.email}</div>
+              <div className={styles.accountInfo}>{user.email}</div>
             </div>
             <button
               className={styles.edit}
