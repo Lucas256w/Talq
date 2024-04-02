@@ -5,16 +5,16 @@ import friendsSelected from "/friends-selected.svg";
 import settings from "/settings.svg";
 import settingsSelected from "/settings-selected.svg";
 import styles from "./Navbar.module.css";
+import PropTypes from "prop-types";
 
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({ page, setPage }) => {
+const Navbar = ({ page }) => {
   const navigate = useNavigate();
 
   // Function to handle tab change and potentially other logic
   const changeTab = (newPage) => {
     if (newPage !== page) {
-      setPage(newPage);
       navigate(`/${newPage}`);
     }
   };
@@ -57,6 +57,10 @@ const Navbar = ({ page, setPage }) => {
       </div>
     </div>
   );
+};
+
+Navbar.propTypes = {
+  page: PropTypes.string.isRequired,
 };
 
 export default Navbar;

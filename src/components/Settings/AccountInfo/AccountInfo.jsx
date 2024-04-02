@@ -6,11 +6,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./AccountInfo.module.css";
 import { useContext, useState } from "react";
 import { UserContext } from "../../../App";
-
-const testUser = {
-  username: "User Here",
-  email: "Test@gmail.com",
-};
+import PropTypes from "prop-types";
 
 const AccountInfo = () => {
   const [editScreen, setEditScreen] = useState(null);
@@ -83,4 +79,13 @@ const AccountInfo = () => {
     </div>
   );
 };
+
+AccountInfo.propTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    profile_img: PropTypes.string,
+  }),
+};
+
 export default AccountInfo;

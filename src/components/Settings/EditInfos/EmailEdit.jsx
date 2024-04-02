@@ -1,4 +1,5 @@
 import styles from "./Edit.module.css";
+import PropTypes from "prop-types";
 
 const EmailEdit = ({ setEditScreen }) => {
   return (
@@ -40,6 +41,10 @@ const EmailEdit = ({ setEditScreen }) => {
       </div>
     </>
   );
+};
+
+EmailEdit.propTypes = {
+  setEditScreen: PropTypes.func.isRequired,
 };
 
 export default EmailEdit;

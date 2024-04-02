@@ -1,5 +1,5 @@
 import styles from "./Edit.module.css";
-
+import PropTypes from "prop-types";
 const PasswordEdit = ({ setEditScreen }) => {
   return (
     <>
@@ -51,6 +51,10 @@ const PasswordEdit = ({ setEditScreen }) => {
       </div>
     </>
   );
+};
+
+PasswordEdit.propTypes = {
+  setEditScreen: PropTypes.func.isRequired,
 };
 
 export default PasswordEdit;

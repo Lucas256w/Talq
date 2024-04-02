@@ -40,8 +40,9 @@
 
 .profileIcon {
   border-radius: 50%;
-  height: 2rem;
-  width: 2rem;
+  height: 3em;
+  width: 3rem;
+  object-fit: cover;
 }
 
 .friendName {
@@ -57,7 +58,7 @@
   border-radius: 5px;
   margin-left: auto;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .removeFriend:hover {

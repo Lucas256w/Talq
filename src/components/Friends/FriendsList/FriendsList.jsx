@@ -1,26 +1,78 @@
 import placeholder from "/placeholder.webp";
 import styles from "./FriendsList.module.css";
-
-const testData = [
-  { id: 1, name: "mike" },
-  { id: 2, name: "mike" },
-  { id: 3, name: "mike" },
-  { id: 4, name: "mike" },
-];
+import { useEffect, useState } from "react";
+import { getFriendsAPI, removeFriendAPI } from "../../../api/userAPI";
 
 const FriendsList = () => {
+  const [friends, setFriends] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filteredFriends, setFilteredFriends] = useState([]);
+
+  // Fetch friends
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    const getFriends = async () => {
+      try {
+        const friends = await getFriendsAPI(token);
+        setFriends(friends);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getFriends();
+  }, []);
+
+  // Remove friend
+  const handleRemove = async (id) => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    try {
+      await removeFriendAPI(token, id);
+      setFriends(friends.filter((friend) => friend._id !== id));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Filter by search matching username
+  useEffect(() => {
+    setFilteredFriends(
+      friends.filter((friend) =>
+        friend.username.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [search, friends]);
+
   return (
     <div className={styles.friendListPage}>
       <div className={styles.inputContainer}>
-        <input className={styles.input} type="text" placeholder="Search" />
+        <input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className={styles.input}
+          type="text"
+          placeholder="Search"
+        />
       </div>
-      <div>All Friends - 37</div>
+      <div>All Friends - {friends.length}</div>
       <div className={styles.friendsContainer}>
-        {testData.map((f) => (
-          <div className={styles.friendTab} key={f.id}>
-            <img className={styles.profileIcon} src={placeholder} />
-            <div className={styles.friendName}>{f.name}</div>
-            <button className={styles.removeFriend}>remove</button>
+        {filteredFriends.map((friend) => (
+          <div className={styles.friendTab} key={friend._id}>
+            <img
+              className={styles.profileIcon}
+              src={friend.profile_img ? friend.profile_img : placeholder}
+            />
+            <div className={styles.friendName}>{friend.username}</div>
+            <button
+              onClick={() => handleRemove(friend._id)}
+              className={styles.removeFriend}
+            >
+              remove
+            </button>
           </div>
         ))}
       </div>

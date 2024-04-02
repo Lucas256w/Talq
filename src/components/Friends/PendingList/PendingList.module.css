@@ -40,8 +40,9 @@
 
 .profileIcon {
   border-radius: 50%;
-  height: 2rem;
-  width: 2rem;
+  height: 3rem;
+  width: 3rem;
+  object-fit: cover;
 }
 
 .userName {
@@ -57,7 +58,7 @@
   background-color: rgb(182, 0, 0);
   margin-left: auto;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .cancel:hover {

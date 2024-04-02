@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import styles from "./App.module.css";
 import { useEffect, useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { reloginAPI } from "./api/userAPI";
+import { reloginAPI } from "./api/authAPI";
 
 export const UserContext = createContext({
   user: {},

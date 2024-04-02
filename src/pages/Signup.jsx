@@ -1,6 +1,6 @@
 import placeholder from "/placeholder.webp";
 import SignupForm from "../components/LoginSignup/SignupForm";
-import { signupAPI } from "../api/userAPI";
+import { signupAPI } from "../api/authAPI";
 import { useState } from "react";
 
 const Signup = () => {

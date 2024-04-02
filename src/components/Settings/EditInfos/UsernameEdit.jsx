@@ -1,4 +1,5 @@
 import styles from "./Edit.module.css";
+import PropTypes from "prop-types";
 
 const UsernameEdit = ({ setEditScreen }) => {
   return (
@@ -40,6 +41,10 @@ const UsernameEdit = ({ setEditScreen }) => {
       </div>
     </>
   );
+};
+
+UsernameEdit.propTypes = {
+  setEditScreen: PropTypes.func.isRequired,
 };
 
 export default UsernameEdit;
