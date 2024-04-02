@@ -1,7 +1,43 @@
 import styles from "./Edit.module.css";
 import PropTypes from "prop-types";
+import { useState } from "react";
+import { updateUsernameAPI } from "../../../api/userAPI";
 
-const UsernameEdit = ({ setEditScreen }) => {
+const UsernameEdit = ({ setEditScreen, setUserData }) => {
+  const [info, setInfo] = useState({
+    username: "",
+    password: "",
+  });
+
+  // Update username
+  const handleUpdate = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    if (info.username.length < 4) {
+      alert("Username must be at least 4 characters long");
+      return;
+    }
+
+    try {
+      const result = await updateUsernameAPI(token, info);
+      if (result.errors) {
+        alert(result.errors[0].msg);
+        return;
+      }
+
+      if (result.message === "Username updated") {
+        alert("Username updated");
+        setEditScreen(null);
+        setUserData((prev) => ({ ...prev, username: info.username }));
+      } else {
+        alert(result.message);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <div className={styles.overlay}></div>
@@ -19,6 +55,8 @@ const UsernameEdit = ({ setEditScreen }) => {
             name="username"
             type="text"
             id="username"
+            value={info.username}
+            onChange={(e) => setInfo({ ...info, username: e.target.value })}
           />
         </div>
         <div className={styles.inputGroup}>
@@ -30,13 +68,17 @@ const UsernameEdit = ({ setEditScreen }) => {
             name="password"
             type="password"
             id="password"
+            value={info.password}
+            onChange={(e) => setInfo({ ...info, password: e.target.value })}
           />
         </div>
         <div className={styles.actionButtonContainer}>
           <button className={styles.cancel} onClick={() => setEditScreen(null)}>
             Cancel
           </button>
-          <button className={styles.done}>Done</button>
+          <button className={styles.done} onClick={handleUpdate}>
+            Done
+          </button>
         </div>
       </div>
     </>
@@ -45,6 +87,7 @@ const UsernameEdit = ({ setEditScreen }) => {
 
 UsernameEdit.propTypes = {
   setEditScreen: PropTypes.func.isRequired,
+  setUserData: PropTypes.func.isRequired,
 };
 
 export default UsernameEdit;

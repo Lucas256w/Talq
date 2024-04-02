@@ -13,7 +13,7 @@ function App() {
   const [page, setPage] = useState("chats");
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {

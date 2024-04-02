@@ -1,7 +1,7 @@
 import placeholder from "/placeholder.webp";
 import styles from "./FriendsList.module.css";
 import { useEffect, useState } from "react";
-import { getFriendsAPI, removeFriendAPI } from "../../../api/userAPI";
+import { getFriendsAPI, removeFriendAPI } from "../../../api/userAPI.js";
 
 const FriendsList = () => {
   const [friends, setFriends] = useState([]);

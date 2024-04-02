@@ -1,6 +1,6 @@
 import placeholder from "/placeholder.webp";
 import styles from "./MessageList.module.css";
-import { useState } from "react";
+import PropTypes from "prop-types";
 
 const testData = [
   { id: 1, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
@@ -24,8 +24,6 @@ const MessageList = ({ selected, setSelected }) => {
   const handleSelect = (id) => {
     setSelected(id);
   };
-
-  console.log(selected);
 
   return (
     <div className={styles.messageList}>
@@ -59,6 +57,11 @@ const MessageList = ({ selected, setSelected }) => {
       </div>
     </div>
   );
+};
+
+MessageList.propTypes = {
+  selected: PropTypes.number,
+  setSelected: PropTypes.func,
 };
 
 export default MessageList;
