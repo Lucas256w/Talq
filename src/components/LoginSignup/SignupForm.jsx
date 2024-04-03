@@ -91,9 +91,11 @@ const SignupForm = ({ info, setInfo, handleSignup }) => {
               id="confirmPassword"
             />
           </div>
-          <button className={styles.btn} type="submit">
-            Sign Up
-          </button>
+          <div className={styles.btnsContainer}>
+            <button className={styles.btn} type="submit">
+              Sign Up
+            </button>
+          </div>
         </form>
         <div className={styles.signupDirect}>
           Already have an account?{" "}

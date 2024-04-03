@@ -77,20 +77,30 @@
   border: none;
 }
 
-.btn {
+.btnsContainer {
+  margin-top: 2rem;
+}
+
+.btn,
+.demobtn {
   color: white;
   font-family: inherit;
   font-size: 1rem;
   background-color: var(--blue);
   border: none;
   width: 100%;
-  margin-top: 2rem;
   margin-bottom: 1rem;
   padding: 0.5rem;
   border-radius: 5px;
 }
 
-.btn:hover {
+.demobtn {
+  background-color: white;
+  color: var(--blue);
+}
+
+.btn:hover,
+.demobtn:hover {
   filter: brightness(90%);
   cursor: pointer;
 }

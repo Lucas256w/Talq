@@ -13,7 +13,7 @@ const LoginForm = ({ handleLogin, setLoginInfo, loginInfo }) => {
         </div>
         <div className={styles.formTitle}>Welcome back!</div>
         <div className={styles.formSubtitle}>So excited to see you again</div>
-        <form className={styles.form} onSubmit={handleLogin}>
+        <form className={styles.form} onSubmit={(e) => handleLogin(e)}>
           <div className={styles.inputGroup}>
             <label className={styles.label} htmlFor="username">
               USERNAME
@@ -44,9 +44,17 @@ const LoginForm = ({ handleLogin, setLoginInfo, loginInfo }) => {
               }
             />
           </div>
-          <button className={styles.btn} type="submit">
-            Log In
-          </button>
+          <div className={styles.btnsContainer}>
+            <button className={styles.btn} type="submit">
+              Log In
+            </button>
+            <button
+              className={styles.demobtn}
+              onClick={(e) => handleLogin(e, true)}
+            >
+              Log In with Demo Account
+            </button>
+          </div>
         </form>
         <div className={styles.signupDirect}>
           Need an account?{" "}

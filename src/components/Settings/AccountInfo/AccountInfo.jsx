@@ -68,12 +68,16 @@ const AccountInfo = () => {
           src={userData.profile_img ? userData.profile_img : profileIcon}
           alt="Profile Icon"
         />
-        <div
-          className={styles.imageUpload}
-          onClick={() => setEditScreen("ProfileImg")}
-        >
-          Change Profile Photo (Optional)
-        </div>
+        {userData.username === "Demo User" ? (
+          <div>Can not edit information on Demo Account</div>
+        ) : (
+          <div
+            className={styles.imageUpload}
+            onClick={() => setEditScreen("ProfileImg")}
+          >
+            Change Profile Photo (Optional)
+          </div>
+        )}
         <div className={styles.accountInfos}>
           <div className={styles.infoSection}>
             <div>
@@ -83,6 +87,7 @@ const AccountInfo = () => {
             <button
               className={styles.edit}
               onClick={() => setEditScreen("Username")}
+              {...(userData.username === "Demo User" && { disabled: true })}
             >
               Edit
             </button>
@@ -95,6 +100,7 @@ const AccountInfo = () => {
             <button
               className={styles.edit}
               onClick={() => setEditScreen("Email")}
+              {...(userData.username === "Demo User" && { disabled: true })}
             >
               Edit
             </button>
@@ -107,6 +113,7 @@ const AccountInfo = () => {
             <button
               className={styles.edit}
               onClick={() => setEditScreen("Password")}
+              {...(userData.username === "Demo User" && { disabled: true })}
             >
               Edit
             </button>

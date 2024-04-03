@@ -58,6 +58,15 @@
   font-weight: 500;
 }
 
+.edit:disabled {
+  filter: brightness(50%);
+}
+
+.edit:disabled:hover {
+  cursor: auto;
+  filter: brightness(50%);
+}
+
 .edit:hover,
 .logout:hover {
   cursor: pointer;
