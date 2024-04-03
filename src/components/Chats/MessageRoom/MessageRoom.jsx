@@ -63,6 +63,8 @@ const MessageRoom = ({ selected, setSelected }) => {
     };
 
     fetchMessageRoom();
+    const intervalId = setInterval(fetchMessageRoom, 5000);
+    return () => clearInterval(intervalId);
   }, [selected, user, setSelected]);
 
   // Send message
@@ -120,8 +122,8 @@ const MessageRoom = ({ selected, setSelected }) => {
 
     fetchMessages();
 
-    // const intervalId = setInterval(fetchMessages, 5000);
-    // return () => clearInterval(intervalId);
+    const intervalId = setInterval(fetchMessages, 5000);
+    return () => clearInterval(intervalId);
   }, [selected, setSelected]);
 
   // Remove user from message room

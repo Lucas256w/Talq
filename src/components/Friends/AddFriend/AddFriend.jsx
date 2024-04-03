@@ -30,6 +30,9 @@ const AddFriend = () => {
     };
 
     getIncomingRequests();
+
+    const intervalId = setInterval(getIncomingRequests, 5000);
+    return () => clearInterval(intervalId);
   }, []);
 
   const handleAddFriend = async (e) => {

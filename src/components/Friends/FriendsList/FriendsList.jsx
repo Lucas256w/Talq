@@ -23,6 +23,9 @@ const FriendsList = () => {
     };
 
     getFriends();
+
+    const intervalId = setInterval(getFriends, 5000);
+    return () => clearInterval(intervalId);
   }, []);
 
   // Remove friend

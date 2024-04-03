@@ -14,8 +14,9 @@ const UsernameEdit = ({ setEditScreen, setUserData }) => {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    if (info.username.length < 4) {
-      alert("Username must be at least 4 characters long");
+    // needs to be at least 4-20 characters long
+    if (info.username.length < 4 || info.username.length > 20) {
+      alert("Username must be between 4 and 20 characters");
       return;
     }
 

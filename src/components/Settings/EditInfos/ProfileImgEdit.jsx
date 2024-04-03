@@ -17,6 +17,12 @@ const ProfileImgEdit = ({ setEditScreen, setUserData }) => {
     const token = localStorage.getItem("token");
     if (!token) return;
 
+    // if no file is selected
+    if (!fileInput.current.files[0]) {
+      alert("No photo selected");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("profile_img", fileInput.current.files[0]);
 
