@@ -18,10 +18,14 @@ const Chats = () => {
       {screenSize > 900 ? (
         <>
           <MessageList selected={selected} setSelected={setSelected} />
-          {selected ? <MessageRoom setSelected={setSelected} /> : <Welcome />}
+          {selected ? (
+            <MessageRoom selected={selected} setSelected={setSelected} />
+          ) : (
+            <Welcome />
+          )}
         </>
       ) : selected ? (
-        <MessageRoom setSelected={setSelected} />
+        <MessageRoom selected={selected} setSelected={setSelected} />
       ) : (
         <MessageList selected={selected} setSelected={setSelected} />
       )}

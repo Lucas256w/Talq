@@ -30,4 +30,38 @@ const getMessageRoomsAPI = async (token) => {
   return data;
 };
 
-export { createMessageRoomAPI, getMessageRoomsAPI };
+// GET request to get one message room
+const getMessageRoomAPI = async (token, id) => {
+  const response = await fetch(`${domain}/api/message-room/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await response.json();
+  return data;
+};
+
+// DELETE request to remove a user from a message room
+const removeUserFromMessageRoomAPI = async (token, roomId) => {
+  const response = await fetch(
+    `${domain}/api/message-room/remove-user/${roomId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  const data = await response.json();
+  return data;
+};
+
+export {
+  createMessageRoomAPI,
+  getMessageRoomsAPI,
+  getMessageRoomAPI,
+  removeUserFromMessageRoomAPI,
+};

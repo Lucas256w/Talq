@@ -3,6 +3,7 @@
   flex-direction: column;
   overflow: scroll;
   width: 100%;
+  height: 100%;
 }
 
 .roomHeader {
@@ -15,10 +16,20 @@
   border-bottom: 2px solid var(--border-color);
 }
 
-.profileIcon {
-  height: 3rem;
-  width: 3rem;
-  border-radius: 50%;
+.leaveBtn {
+  background-color: red;
+  color: white;
+  font-weight: 500;
+  border: none;
+  font-family: inherit;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-left: auto;
+}
+
+.leaveBtn:hover {
+  cursor: pointer;
+  filter: brightness(90%);
 }
 
 .backIcon {
@@ -37,9 +48,35 @@
   font-size: 0.9rem;
 }
 
+.nameAndPicContainer {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.messageProfileImg {
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  object-fit: cover;
+}
+
+.messageUsername {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #9b9e9f;
+  align-self: flex-end;
+  font-family: sans-serif;
+}
+
 .receiver {
   width: fit-content;
   max-width: 50%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
 }
 
 .receiverBox {
@@ -47,17 +84,23 @@
   padding: 1rem;
   border-radius: 0 15px 15px 15px;
   width: fit-content;
+  max-width: 100%;
   color: #9b9e9f;
 }
 
 .receiverTime {
-  text-align: end;
+  text-align: start;
 }
 
 .sender {
   width: fit-content;
   max-width: 50%;
   margin-left: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
 }
 
 .senderBox {
@@ -65,6 +108,8 @@
   padding: 1rem;
   border-radius: 15px 0 15px 15px;
   color: #13242a;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .senderTime,
@@ -75,13 +120,36 @@
   margin: 0.5rem 0;
 }
 
+.senderTime {
+  text-align: end;
+}
+
+.message {
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
 .inputContainer {
   display: flex;
-  padding: 1rem 0;
   background-color: #202426;
   border-radius: 15px;
   border: 2px solid var(--border-color);
   flex: 1;
+}
+
+.sendBtn {
+  background-color: var(--blue);
+  color: white;
+  font-weight: 500;
+  border: none;
+  min-height: 100%;
+  font-family: inherit;
+  border-radius: 0 15px 15px 0;
+}
+
+.sendBtn:hover {
+  cursor: pointer;
+  filter: brightness(90%);
 }
 
 .input {
@@ -89,6 +157,7 @@
   border: none;
   color: var(--blue);
   flex: 1;
+  margin: 1rem 0;
   padding: 0 1rem;
   font-size: 1rem;
 }

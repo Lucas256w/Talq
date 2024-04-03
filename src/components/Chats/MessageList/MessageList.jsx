@@ -6,27 +6,11 @@ import Popup from "../Popup/Popup";
 import { useState, useEffect } from "react";
 import { getMessageRoomsAPI } from "../../../api/messageRoomAPI";
 
-const testData = [
-  { id: 1, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-  { id: 2, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-  { id: 3, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-  { id: 4, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-  { id: 5, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-  { id: 6, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-  { id: 7, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-  { id: 8, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-  { id: 9, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-  { id: 10, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-  { id: 12, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-  { id: 11, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-  { id: 13, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-  { id: 14, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-  { id: 15, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
-];
-
 const MessageList = ({ selected, setSelected }) => {
+  const [search, setSearch] = useState("");
   const [popup, setPopup] = useState(false);
   const [messageRooms, setMessageRooms] = useState([]);
+  const [filteredRooms, setFilteredRooms] = useState([]);
   const handleSelect = (id) => {
     setSelected(id);
   };
@@ -39,7 +23,6 @@ const MessageList = ({ selected, setSelected }) => {
     const fetchMessageRooms = async () => {
       try {
         const data = await getMessageRoomsAPI(token);
-        console.log(data);
         setMessageRooms(data);
       } catch (err) {
         console.error(err);
@@ -47,7 +30,22 @@ const MessageList = ({ selected, setSelected }) => {
     };
 
     fetchMessageRooms();
-  }, []);
+
+    const intervalId = setInterval(fetchMessageRooms, 5000);
+    return () => clearInterval(intervalId);
+  }, [popup, selected]);
+
+  // Filter message rooms through search by all usernames
+  useEffect(() => {
+    setFilteredRooms(
+      messageRooms.filter((room) =>
+        room.users
+          .map((user) => user.username.toLowerCase())
+          .join(" ")
+          .includes(search.toLowerCase())
+      )
+    );
+  }, [search, messageRooms]);
 
   return (
     <div className={styles.messageList}>
@@ -57,6 +55,8 @@ const MessageList = ({ selected, setSelected }) => {
           type="text"
           className={styles.input}
           placeholder="Search Message"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
       <div className={styles.titleContainer}>
@@ -66,7 +66,7 @@ const MessageList = ({ selected, setSelected }) => {
         </div>
       </div>
       <div className={styles.tabsContainer}>
-        {messageRooms.map((room) => (
+        {filteredRooms.map((room) => (
           <div
             className={`${styles.messageTab} ${
               selected === room._id ? styles.selected : ""
@@ -87,15 +87,16 @@ const MessageList = ({ selected, setSelected }) => {
             <div className={styles.info}>
               <div className={styles.nameAndDateContainer}>
                 <div className={styles.name}>{`${room.users.map(
-                  (user) => user.username + " "
+                  (user) => " " + user.username
                 )}`}</div>
-
-                <div className={styles.date}>
-                  {room.lastupdated && room.lastupdated}
-                </div>
               </div>
-              <div className={styles.lastText}>
-                {room.lastMessage && room.lastMessage}
+              <div className={styles.lastTextAndDate}>
+                <div className={styles.lastText}>
+                  {room.lastMessage && room.lastMessage}
+                </div>
+                <div className={styles.date}>
+                  {room.lastUpdated && room.lastUpdated}
+                </div>
               </div>
             </div>
           </div>
@@ -106,7 +107,7 @@ const MessageList = ({ selected, setSelected }) => {
 };
 
 MessageList.propTypes = {
-  selected: PropTypes.number,
+  selected: PropTypes.string,
   setSelected: PropTypes.func,
 };
 

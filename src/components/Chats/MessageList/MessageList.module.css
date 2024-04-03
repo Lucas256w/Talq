@@ -36,6 +36,7 @@
   padding: 1rem;
   border-radius: 5px;
   border: 1px solid var(--dark-grey);
+  overflow: hidden;
 }
 
 .messageTab:hover {
@@ -58,28 +59,34 @@
 .name {
   font-size: 1.25rem;
   font-weight: 400;
-  max-width: 90%;
   color: #fefefe;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.date {
-  font-size: 0.7rem;
-  font-weight: 200;
-  color: #7c7f80;
-}
-
-.lastText {
+.lastTextAndDate {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: stretch;
   font-size: 0.7rem;
   font-weight: 300;
   color: #7c7f80;
 }
 
+.lastText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.date {
+  text-align: end;
+}
+
 .info {
   flex: 1;
-  max-width: 70%;
+  max-width: 13.77rem;
 }
 
 .inputContainer {
@@ -98,6 +105,7 @@
   border: none;
   color: var(--blue);
   text-align: center;
+  width: 100%;
 }
 
 .input:focus {
@@ -142,5 +150,13 @@
   }
   .tabsContainer {
     flex-grow: 1;
+  }
+
+  .info {
+    max-width: none;
+  }
+
+  .lastTextAndDate {
+    font-size: 1rem;
   }
 }
