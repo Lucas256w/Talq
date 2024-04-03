@@ -76,10 +76,28 @@ const addUserToMessageRoomAPI = async (token, roomId, payload) => {
   return data;
 };
 
+// PUT request to update name of a message room
+const updateMessageRoomNameAPI = async (token, roomId, payload) => {
+  const response = await fetch(
+    `${domain}/api/message-room/update-name/${roomId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(payload),
+    }
+  );
+  const data = await response.json();
+  return data;
+};
+
 export {
   createMessageRoomAPI,
   getMessageRoomsAPI,
   getMessageRoomAPI,
   removeUserFromMessageRoomAPI,
   addUserToMessageRoomAPI,
+  updateMessageRoomNameAPI,
 };

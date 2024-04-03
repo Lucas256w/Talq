@@ -16,6 +16,35 @@
   border-bottom: 2px solid var(--border-color);
 }
 
+.editIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.editIcon:hover {
+  cursor: pointer;
+}
+
+.roomName {
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.roomNameInput {
+  border: 2px solid var(--border-color);
+  width: 100%;
+  background-color: var(--dark-grey);
+  color: white;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.roomNameInput:focus {
+  border: 2px solid var(--border-color);
+  outline: none;
+}
+
 .leaveBtn,
 .inviteBtn {
   color: white;
@@ -86,6 +115,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: start;
+  margin-top: 1rem;
 }
 
 .receiverBox {

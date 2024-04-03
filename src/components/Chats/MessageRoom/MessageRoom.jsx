@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import {
   getMessageRoomAPI,
   removeUserFromMessageRoomAPI,
+  updateMessageRoomNameAPI,
 } from "../../../api/messageRoomAPI";
 import { createMessageAPI, getMessagesAPI } from "../../../api/messageAPI";
 import placeholder from "/placeholder.webp";
@@ -11,14 +12,23 @@ import propTypes from "prop-types";
 import { UserContext } from "../../../App";
 import { useContext, useState } from "react";
 import Popup from "../Popup/Popup";
+import edit from "/edit.svg";
 
 const MessageRoom = ({ selected, setSelected }) => {
   const bottomRef = useRef(null);
-  const [users, setUsers] = useState([]);
+  const [messageRoomInfo, setMessageRoomInfo] = useState({
+    users: [],
+    name: "",
+    type: "",
+  });
   const [messageToSend, setMessageToSend] = useState("");
   const [messages, setMessages] = useState([]);
   const { user } = useContext(UserContext);
   const [popup, setPopup] = useState(false);
+  const [toggleNameInput, setToggleNameInput] = useState(false);
+  const [name, setName] = useState("");
+
+  console.log(name);
 
   useEffect(() => {
     if (bottomRef.current) {
@@ -45,7 +55,8 @@ const MessageRoom = ({ selected, setSelected }) => {
           return;
         }
 
-        setUsers(data.users.filter((u) => u._id !== user.id));
+        setMessageRoomInfo(data);
+        setName(data.name);
       } catch (err) {
         console.error(err);
       }
@@ -130,6 +141,39 @@ const MessageRoom = ({ selected, setSelected }) => {
     }
   };
 
+  // Update message room name
+  const handleUpdateName = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    if (!name) {
+      alert("Please enter a name");
+      return;
+    }
+
+    try {
+      const data = await updateMessageRoomNameAPI(token, selected, { name });
+      if (data.errors) {
+        alert(data.errors[0].msg);
+        return;
+      }
+
+      if (data.message === "Message room not found") {
+        setSelected(null);
+        return;
+      }
+
+      if (data.message === "Message room name updated") {
+        setMessageRoomInfo({ ...messageRoomInfo, name });
+        setToggleNameInput(false);
+      } else {
+        alert(data.message);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className={styles.messageRoom}>
       {popup && (
@@ -142,13 +186,39 @@ const MessageRoom = ({ selected, setSelected }) => {
           alt="back button"
           onClick={() => setSelected(null)}
         />
-        <div>{`${users.map((user) => " " + user.username)}`}</div>
-        <button className={styles.inviteBtn} onClick={() => setPopup(true)}>
-          Invite
-        </button>
-        <button className={styles.leaveBtn} onClick={handleLeave}>
-          Leave
-        </button>
+        {messageRoomInfo.type === "group" && (
+          <img
+            className={styles.editIcon}
+            src={edit}
+            alt="edit button"
+            onClick={() => setToggleNameInput(!toggleNameInput)}
+          />
+        )}
+        {messageRoomInfo.type === "group" && toggleNameInput ? (
+          <input
+            type="text"
+            className={styles.roomNameInput}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        ) : (
+          <div className={styles.roomName}>{messageRoomInfo.name}</div>
+        )}
+
+        {messageRoomInfo.type === "group" && toggleNameInput ? (
+          <button className={styles.inviteBtn} onClick={handleUpdateName}>
+            Save
+          </button>
+        ) : messageRoomInfo.type === "group" && !toggleNameInput ? (
+          <>
+            <button className={styles.inviteBtn} onClick={() => setPopup(true)}>
+              Invite
+            </button>
+            <button className={styles.leaveBtn} onClick={handleLeave}>
+              Leave
+            </button>
+          </>
+        ) : null}
       </div>
       <div className={styles.room} ref={bottomRef}>
         {messages.map((message) =>

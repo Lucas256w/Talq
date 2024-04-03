@@ -39,13 +39,12 @@ const MessageList = ({ selected, setSelected }) => {
   useEffect(() => {
     setFilteredRooms(
       messageRooms.filter((room) =>
-        room.users
-          .map((user) => user.username.toLowerCase())
-          .join(" ")
-          .includes(search.toLowerCase())
+        room.name.toLowerCase().includes(search.toLowerCase())
       )
     );
   }, [search, messageRooms]);
+
+  console.log(messageRooms);
 
   return (
     <div className={styles.messageList}>
@@ -86,9 +85,7 @@ const MessageList = ({ selected, setSelected }) => {
             )}
             <div className={styles.info}>
               <div className={styles.nameAndDateContainer}>
-                <div className={styles.name}>{`${room.users.map(
-                  (user) => " " + user.username
-                )}`}</div>
+                <div className={styles.name}>{room.name}</div>
               </div>
               <div className={styles.lastTextAndDate}>
                 <div className={styles.lastText}>

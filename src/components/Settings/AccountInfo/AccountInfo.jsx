@@ -35,7 +35,6 @@ const AccountInfo = () => {
     getUserData();
   }, []);
 
-  console.log(userData);
   const handleLogout = () => {
     localStorage.clear("token");
     navigate("/login");
