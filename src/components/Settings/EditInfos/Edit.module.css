@@ -1,4 +1,5 @@
 .overlay {
+  z-index: 3;
   position: fixed;
   background-color: black;
   height: 100vh;
@@ -21,8 +22,12 @@
 }
 
 .editCard {
-  z-index: 1;
-  position: absolute;
+  z-index: 3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform-origin: left top;
+
   background-color: #303338;
   padding: 2rem;
   border-radius: 3px;
@@ -31,20 +36,19 @@
   align-items: center;
 
   animation: bounceIn 0.2s ease-out both;
-  transform-origin: center;
 }
 
 @keyframes bounceIn {
   0% {
-    transform: scale(0.5);
+    transform: scale(0.5) translate(-50%, -50%);
     opacity: 0;
   }
   70% {
-    transform: scale(1.05);
+    transform: scale(1.05) translate(-50%, -50%);
     opacity: 1;
   }
   100% {
-    transform: scale(1);
+    transform: scale(1) translate(-50%, -50%);
   }
 }
 
@@ -65,6 +69,7 @@
   color: white;
   font-size: 0.9rem;
   color: gray;
+  text-align: center;
 }
 
 .label {
@@ -142,4 +147,10 @@
 .changePic:hover {
   cursor: pointer;
   filter: brightness(90%);
+}
+
+@media (max-width: 900px) {
+  .editCard {
+    width: 60%;
+  }
 }

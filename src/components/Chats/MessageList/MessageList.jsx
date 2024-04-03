@@ -1,6 +1,10 @@
 import placeholder from "/placeholder.webp";
+import group from "/group.svg";
 import styles from "./MessageList.module.css";
 import PropTypes from "prop-types";
+import Popup from "../Popup/Popup";
+import { useState, useEffect } from "react";
+import { getMessageRoomsAPI } from "../../../api/messageRoomAPI";
 
 const testData = [
   { id: 1, name: "mike", lastText: "something wrong?", date: "13.10 PM" },
@@ -21,12 +25,33 @@ const testData = [
 ];
 
 const MessageList = ({ selected, setSelected }) => {
+  const [popup, setPopup] = useState(false);
+  const [messageRooms, setMessageRooms] = useState([]);
   const handleSelect = (id) => {
     setSelected(id);
   };
 
+  // Fetch message rooms
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    const fetchMessageRooms = async () => {
+      try {
+        const data = await getMessageRoomsAPI(token);
+        console.log(data);
+        setMessageRooms(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchMessageRooms();
+  }, []);
+
   return (
     <div className={styles.messageList}>
+      <>{popup && <Popup setPopup={setPopup} />}</>
       <div className={styles.inputContainer}>
         <input
           type="text"
@@ -34,23 +59,44 @@ const MessageList = ({ selected, setSelected }) => {
           placeholder="Search Message"
         />
       </div>
-      <div className={styles.tabTitle}>Messages</div>
+      <div className={styles.titleContainer}>
+        <div className={styles.tabTitle}>Messages</div>
+        <div className={styles.addRoom} onClick={() => setPopup(true)}>
+          +
+        </div>
+      </div>
       <div className={styles.tabsContainer}>
-        {testData.map((t) => (
+        {messageRooms.map((room) => (
           <div
             className={`${styles.messageTab} ${
-              selected === t.id ? styles.selected : ""
+              selected === room._id ? styles.selected : ""
             }`}
-            key={t.id}
-            onClick={() => handleSelect(t.id)}
+            key={room._id}
+            onClick={() => handleSelect(room._id)}
           >
-            <img className={styles.profileIcon} src={placeholder} />
+            {room.users.length > 1 ? (
+              <img className={styles.groupIcon} src={group} />
+            ) : room.users[0].profile_img ? (
+              <img
+                className={styles.profileIcon}
+                src={room.users[0].profile_img}
+              />
+            ) : (
+              <img className={styles.profileIcon} src={placeholder} />
+            )}
             <div className={styles.info}>
               <div className={styles.nameAndDateContainer}>
-                <div className={styles.name}>{t.name}</div>
-                <div className={styles.date}>{t.date}</div>
+                <div className={styles.name}>{`${room.users.map(
+                  (user) => user.username + " "
+                )}`}</div>
+
+                <div className={styles.date}>
+                  {room.lastupdated && room.lastupdated}
+                </div>
               </div>
-              <div className={styles.lastText}>{t.lastText}</div>
+              <div className={styles.lastText}>
+                {room.lastMessage && room.lastMessage}
+              </div>
             </div>
           </div>
         ))}

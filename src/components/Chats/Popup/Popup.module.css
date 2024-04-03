@@ -1,0 +1,125 @@
+.overlay {
+  z-index: 3;
+  position: fixed;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  animation: opacity-appear 0.5s forwards;
+}
+
+@keyframes opacity-appear {
+  from {
+    opacity: 25%;
+  }
+
+  to {
+    opacity: 50%;
+  }
+}
+
+.card {
+  z-index: 3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform-origin: left top;
+
+  background-color: #303338;
+  padding: 2rem;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 50%;
+
+  animation: bounceIn 0.2s ease-out both;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fefefe;
+}
+
+.friendList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-height: 20rem;
+  overflow-y: scroll;
+}
+
+.friend {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: #202426;
+}
+
+.friend:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+
+.checkbox {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: #202426;
+  border: 1px solid var(--blue);
+  margin-left: auto;
+}
+
+.checked {
+  background-color: var(--blue);
+}
+
+.profileIcon {
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  object-fit: cover;
+}
+
+.btnsContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: var(--blue);
+  color: #fefefe;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  font-family: inherit;
+}
+
+.btn:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.5) translate(-50%, -50%);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.05) translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
