@@ -31,8 +31,8 @@ const MessageList = ({ selected, setSelected }) => {
 
     fetchMessageRooms();
 
-    const intervalId = setInterval(fetchMessageRooms, 5000);
-    return () => clearInterval(intervalId);
+    // const intervalId = setInterval(fetchMessageRooms, 5000);
+    // return () => clearInterval(intervalId);
   }, [popup, selected]);
 
   // Filter message rooms through search by all usernames
@@ -49,7 +49,7 @@ const MessageList = ({ selected, setSelected }) => {
 
   return (
     <div className={styles.messageList}>
-      <>{popup && <Popup setPopup={setPopup} />}</>
+      <>{popup && <Popup setPopup={setPopup} makeRoom={true} />}</>
       <div className={styles.inputContainer}>
         <input
           type="text"

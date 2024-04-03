@@ -10,6 +10,7 @@ import styles from "./MessageRoom.module.css";
 import propTypes from "prop-types";
 import { UserContext } from "../../../App";
 import { useContext, useState } from "react";
+import Popup from "../Popup/Popup";
 
 const MessageRoom = ({ selected, setSelected }) => {
   const bottomRef = useRef(null);
@@ -17,6 +18,7 @@ const MessageRoom = ({ selected, setSelected }) => {
   const [messageToSend, setMessageToSend] = useState("");
   const [messages, setMessages] = useState([]);
   const { user } = useContext(UserContext);
+  const [popup, setPopup] = useState(false);
 
   useEffect(() => {
     if (bottomRef.current) {
@@ -107,8 +109,8 @@ const MessageRoom = ({ selected, setSelected }) => {
 
     fetchMessages();
 
-    const intervalId = setInterval(fetchMessages, 5000);
-    return () => clearInterval(intervalId);
+    // const intervalId = setInterval(fetchMessages, 5000);
+    // return () => clearInterval(intervalId);
   }, [selected, setSelected]);
 
   // Remove user from message room
@@ -130,6 +132,9 @@ const MessageRoom = ({ selected, setSelected }) => {
 
   return (
     <div className={styles.messageRoom}>
+      {popup && (
+        <Popup setPopup={setPopup} inviteUsers={true} roomId={selected} />
+      )}
       <div className={styles.roomHeader}>
         <img
           className={styles.backIcon}
@@ -138,6 +143,9 @@ const MessageRoom = ({ selected, setSelected }) => {
           onClick={() => setSelected(null)}
         />
         <div>{`${users.map((user) => " " + user.username)}`}</div>
+        <button className={styles.inviteBtn} onClick={() => setPopup(true)}>
+          Invite
+        </button>
         <button className={styles.leaveBtn} onClick={handleLeave}>
           Leave
         </button>

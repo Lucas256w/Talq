@@ -16,18 +16,27 @@
   border-bottom: 2px solid var(--border-color);
 }
 
-.leaveBtn {
-  background-color: red;
+.leaveBtn,
+.inviteBtn {
   color: white;
   font-weight: 500;
   border: none;
   font-family: inherit;
   padding: 0.5rem 1rem;
   border-radius: 5px;
+}
+
+.leaveBtn {
+  background-color: red;
+}
+
+.inviteBtn {
+  background-color: var(--blue);
   margin-left: auto;
 }
 
-.leaveBtn:hover {
+.leaveBtn:hover,
+.inviteBtn:hover {
   cursor: pointer;
   filter: brightness(90%);
 }
