@@ -28,7 +28,7 @@ const MessageRoom = ({ selected, setSelected }) => {
   const [toggleNameInput, setToggleNameInput] = useState(false);
   const [name, setName] = useState("");
 
-  console.log(name);
+  // Scroll to bottom only when a new message is received or sent compared to the previous render with usememo
 
   useEffect(() => {
     if (bottomRef.current) {
@@ -113,7 +113,7 @@ const MessageRoom = ({ selected, setSelected }) => {
           return;
         }
 
-        setMessages(data);
+        if (data.length !== messages.length) setMessages(data);
       } catch (err) {
         console.error(err);
       }
@@ -123,7 +123,7 @@ const MessageRoom = ({ selected, setSelected }) => {
 
     const intervalId = setInterval(fetchMessages, 5000);
     return () => clearInterval(intervalId);
-  }, [selected, setSelected]);
+  }, [selected, setSelected, messages.length]);
 
   // Remove user from message room
   const handleLeave = async () => {
