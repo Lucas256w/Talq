@@ -56,7 +56,6 @@ const MessageRoom = ({ selected, setSelected }) => {
         }
 
         setMessageRoomInfo(data);
-        setName(data.name);
       } catch (err) {
         console.error(err);
       }
@@ -204,7 +203,14 @@ const MessageRoom = ({ selected, setSelected }) => {
             onChange={(e) => setName(e.target.value)}
           />
         ) : (
-          <div className={styles.roomName}>{messageRoomInfo.name}</div>
+          <div className={styles.roomName}>
+            {messageRoomInfo.name
+              ? messageRoomInfo.name
+              : messageRoomInfo.users
+                  .map((u) => u.username)
+                  .filter((u) => u !== user.username)
+                  .join(", ")}
+          </div>
         )}
 
         {messageRoomInfo.type === "group" && toggleNameInput ? (

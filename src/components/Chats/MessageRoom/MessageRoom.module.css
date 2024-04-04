@@ -110,7 +110,6 @@
 .receiver {
   width: fit-content;
   max-width: 50%;
-  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,7 +134,7 @@
   width: fit-content;
   max-width: 50%;
   margin-left: auto;
-  text-align: center;
+
   display: flex;
   flex-direction: column;
   justify-content: center;

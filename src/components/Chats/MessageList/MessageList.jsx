@@ -3,8 +3,9 @@ import group from "/group.svg";
 import styles from "./MessageList.module.css";
 import PropTypes from "prop-types";
 import Popup from "../Popup/Popup";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getMessageRoomsAPI } from "../../../api/messageRoomAPI";
+import { UserContext } from "../../../App";
 
 const MessageList = ({ selected, setSelected }) => {
   const [search, setSearch] = useState("");
@@ -14,6 +15,7 @@ const MessageList = ({ selected, setSelected }) => {
   const handleSelect = (id) => {
     setSelected(id);
   };
+  const { user } = useContext(UserContext);
 
   // Fetch message rooms
   useEffect(() => {
@@ -39,12 +41,14 @@ const MessageList = ({ selected, setSelected }) => {
   useEffect(() => {
     setFilteredRooms(
       messageRooms.filter((room) =>
-        room.name.toLowerCase().includes(search.toLowerCase())
+        room.name
+          ? room.name.toLowerCase().includes(search.toLowerCase())
+          : room.users[0].username.toLowerCase().includes(search.toLowerCase())
       )
     );
   }, [search, messageRooms]);
 
-  console.log(messageRooms);
+  // get all usernames except the current user in the format (username1, username2, username3)
 
   return (
     <div className={styles.messageList}>
@@ -85,7 +89,14 @@ const MessageList = ({ selected, setSelected }) => {
             )}
             <div className={styles.info}>
               <div className={styles.nameAndDateContainer}>
-                <div className={styles.name}>{room.name}</div>
+                <div className={styles.name}>
+                  {room.name
+                    ? room.name
+                    : room.users
+                        .map((u) => u.username)
+                        .filter((u) => u !== user.username)
+                        .join(", ")}
+                </div>
               </div>
               <div className={styles.lastTextAndDate}>
                 <div className={styles.lastText}>
