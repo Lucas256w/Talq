@@ -3,15 +3,6 @@ Live : https://talq.netlify.app/
 
 API: https://github.com/Lucas256w/Talq-Backend
 
-<h1>Desktop</h1>
-<img width="500" alt="image" src="https://github.com/Lucas256w/Talq/assets/112456075/e3819630-0168-4c9a-8ce8-c3223a315b3e">
-<img width="500" alt="image" src="https://github.com/Lucas256w/Talq/assets/112456075/f0b4c989-ce87-4024-850f-f18240da3aa2">
-
-<h1>Mobile</h1>
-<img width="200" alt="image" src="https://github.com/Lucas256w/Talq/assets/112456075/376d1e8d-fb68-4c83-825c-13af31063c3a">
-<img width="200" alt="image" src="https://github.com/Lucas256w/Talq/assets/112456075/3e006858-455f-4b8d-893b-2357fbd99b66">
-<img width="200" alt="image" src="https://github.com/Lucas256w/Talq/assets/112456075/35fb7677-b6eb-42b9-86c5-6a27108acb90">
-
 
 # About
 Talq is a messaging app where users can come and create private or group messaging rooms and start chatting with friends.
@@ -44,7 +35,18 @@ I created this project mainly to practice fullstack development using the comple
 - Bcrypt to secure password.
 - Cloudinary to store images.
 
-## Run It Locally
+<h1>Screenshots</h1>
+
+<h2>Desktop</h2>
+<img width="500" alt="image" src="https://github.com/Lucas256w/Talq/assets/112456075/e3819630-0168-4c9a-8ce8-c3223a315b3e">
+<img width="500" alt="image" src="https://github.com/Lucas256w/Talq/assets/112456075/f0b4c989-ce87-4024-850f-f18240da3aa2">
+
+<h2>Mobile</h2>
+<img width="200" alt="image" src="https://github.com/Lucas256w/Talq/assets/112456075/376d1e8d-fb68-4c83-825c-13af31063c3a">
+<img width="200" alt="image" src="https://github.com/Lucas256w/Talq/assets/112456075/3e006858-455f-4b8d-893b-2357fbd99b66">
+<img width="200" alt="image" src="https://github.com/Lucas256w/Talq/assets/112456075/35fb7677-b6eb-42b9-86c5-6a27108acb90">
+
+# Run It Locally
 
 ### Prerequisites
 
