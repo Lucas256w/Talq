@@ -35,6 +35,7 @@ I created this project mainly to practice fullstack development using the comple
 - Type checking with PropTypes.
 - React router to navigate through pages.
 - Async and await to fetch data.
+- Polling for live updates.
 
 ### Backend
 - JWT for authorization.
