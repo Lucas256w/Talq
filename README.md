@@ -1,7 +1,8 @@
 # Talq
-Live : https://talq.netlify.app/
 
-API: https://github.com/Lucas256w/Talq-Backend
+Live: https://talq.netlify.app/
+
+API (Backend): https://github.com/Lucas256w/Talq-Backend
 
 
 # About
@@ -51,6 +52,8 @@ I created this project mainly to practice fullstack development using the comple
 ### Prerequisites
 
 - You'll need to install the Backend API repository to work with the frontend, vice versa.
+- - You'll need to setup a MongoDB database.
+- You'll need to setup a cloudinary account in order to store images.
 
 ### Cloning the repository
 
