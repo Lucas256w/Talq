@@ -117,6 +117,10 @@
   overflow-y: scroll;
 }
 
+.tabsContainer::-webkit-scrollbar {
+  display: none;
+}
+
 .titleContainer {
   display: flex;
   justify-content: space-between;

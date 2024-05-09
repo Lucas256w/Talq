@@ -4,6 +4,10 @@
   overflow-y: scroll;
 }
 
+.page::-webkit-scrollbar {
+  display: none;
+}
+
 .loaderBackground {
   background-color: #3498db;
   width: 100%;

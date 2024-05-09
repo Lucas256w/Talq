@@ -6,6 +6,10 @@
   height: 100%;
 }
 
+.messageRoom::-webkit-scrollbar {
+  display: none;
+}
+
 .roomHeader {
   display: flex;
   align-items: center;
@@ -84,6 +88,10 @@
   padding: 2rem;
   overflow: auto;
   font-size: 0.9rem;
+}
+
+.room::-webkit-scrollbar {
+  display: none;
 }
 
 .nameAndPicContainer {

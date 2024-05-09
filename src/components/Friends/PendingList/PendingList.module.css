@@ -6,6 +6,10 @@
   overflow: scroll;
 }
 
+.pendingListPage::-webkit-scrollbar {
+  display: none;
+}
+
 .inputContainer {
   display: flex;
   justify-content: center;

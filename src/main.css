@@ -33,3 +33,9 @@ body,
   overflow-y: scroll;
   font-family: "Noto Sans Syriac", sans-serif;
 }
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+  display: none;
+}

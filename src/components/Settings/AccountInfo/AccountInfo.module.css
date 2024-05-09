@@ -7,6 +7,10 @@
   background-color: var(--dark-grey);
 }
 
+.accountInfoPage::-webkit-scrollbar {
+  display: none;
+}
+
 .accountInfoCard {
   width: 50%;
   min-width: 300px;
